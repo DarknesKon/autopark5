@@ -1,0 +1,37 @@
+.error-message {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  color: #ff4d4d;
+}
+
+.drivers-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.drivers-table th,
+.drivers-table td {
+  border: 1px solid #00aaff;
+  padding: 10px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.drivers-table th {
+  background-color: #007acc;
+  color: #ffffff;
+}
+
+.drivers-table tr:nth-child(even) {
+  background-color: #252c3a;
+}
+
+.drivers-table tr:nth-child(odd) {
+  background-color: #1e2738;
+}
+
+.drivers-table tr:hover {
+  background-color: #37455c;
+}
