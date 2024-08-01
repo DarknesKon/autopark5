@@ -12,7 +12,7 @@ const TransportPage = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get(`http://10.1.16.212/api/v1/car-info/?page=${page}`);
+        const response = await axios.get(`http://10.1.16.211/api/v1/car-info/?page=${page}`);
         const result = response.data;
 
         setCars(prevCars => [...prevCars, ...result.results]);

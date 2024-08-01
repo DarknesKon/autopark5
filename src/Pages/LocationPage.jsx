@@ -32,8 +32,8 @@ const LocationPage = () => {
             </MapContainer>
             <style jsx>{`
                 .location-container {
-                    height: 100vh;
-                    width: 100%;
+                    height: 80vh; /* Увеличена высота контейнера */
+                    width: 90vw; /* Ширина 90% от ширины окна */
                     background-color: #1e1e1e;
                     padding: 20px;
                     border-radius: 10px;
@@ -46,7 +46,7 @@ const LocationPage = () => {
                 }
 
                 #map {
-                    height: calc(100vh - 40px); /* Учитывая padding в 20px */
+                    height: 100%; /* Высота карты установлена на 100% высоты контейнера */
                     width: 100%;
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -1,5 +1,5 @@
-import  { useEffect, useState } from 'react';
-import "./DirectionSheetPage.css"
+import { useEffect, useState } from 'react';
+import "./DirectionSheetPage.css";
 
 const DirectionSheetPage = () => {
   const [data, setData] = useState([]);
@@ -9,12 +9,12 @@ const DirectionSheetPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://10.1.16.212/api/v1/direction-sheet/objects/');
+        const response = await fetch('http://10.1.16.211/api/v1/direction-sheet/objects/');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const result = await response.json();
-        setData(result.results || []); 
+        setData(result.results || []);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -25,12 +25,30 @@ const DirectionSheetPage = () => {
     fetchData();
   }, []);
 
+  const handleDownload = async (fileUrl) => {
+    try {
+      const response = await fetch(fileUrl);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'direction_sheet.docx';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (error) {
+      console.error('Error downloading file:', error);
+    }
+  };
+
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error-message">Error: {error}</div>;
 
   return (
     <div className="direction-sheet-container">
-      <h1>Direction Sheet</h1>
       {data.length > 0 ? (
         <ul className="direction-sheet-list">
           {data.map(item => (
@@ -41,13 +59,18 @@ const DirectionSheetPage = () => {
               <p><strong>End Date:</strong> {item.end_data}</p>
               <p><strong>Notes:</strong> {item.notes}</p>
               <p><strong>Geo:</strong> {item.geo}</p>
+              <button 
+                className="open-button" 
+                onClick={() => handleDownload(`http://10.1.16.211/media//temp/31_07_2024_1722414777.docx`)}
+              >
+                загрузить
+              </button>
             </li>
           ))}
         </ul>
       ) : (
         <p>No data available</p>
       )}
-      
     </div>
   );
 };

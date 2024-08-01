@@ -44,6 +44,11 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => (
           <span className="material-icons-outlined">event_note</span> <span>Путевый лист</span>
         </Link>
       </li>
+      <li className="sidebar-list-item"> {/* Добавьте новый элемент списка */}
+        <Link to="/fuel-info" onClick={closeSidebar}>
+          <span className="material-icons-outlined">local_gas_station</span> <span>Информация о топливе</span>
+        </Link>
+      </li>
     </ul>
   </aside>
 );

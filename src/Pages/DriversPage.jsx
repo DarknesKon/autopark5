@@ -9,7 +9,7 @@ const DriversPage = () => {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const response = await axios.get('http://10.1.16.212/api/v1/drivers/');
+        const response = await axios.get('http://10.1.16.211/api/v1/drivers/');
         setDrivers(response.data.results);
       } catch (err) {
         setError(err.message);
