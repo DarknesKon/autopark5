@@ -7,10 +7,10 @@ const Main = () => (
     </div>
 
     <div className="main-cards">
-      <Card title="Штрафы за последний месяц" count="26" icon="shopping_cart" />
-      <Card title="Штрафы за последний год" count="178" icon="groups" />
-      <Card title="Количество штрафов" count="?" icon="groups" />
-      <Card title="Процент штрафов" count="20%" icon="groups" />
+      <Card title="Штрафы за последний месяц" count="26" icon="warning" />
+      <Card title="Штрафы за последний год" count="178" icon="calendar_today" />
+      <Card title="Количество штрафов" count=" ? " icon="report" />
+      <Card title="Процент штрафов" count="20%" icon="percent" />
     </div>
 
     <Charts />

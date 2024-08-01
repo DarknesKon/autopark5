@@ -4,6 +4,7 @@ body {
   background: linear-gradient(135deg, #1d2634 25%, #263043 100%);
   color: #9e9ea4;
   font-family: 'Montserrat', sans-serif;
+  height: 100%; /* Устанавливаем высоту на 100% */
 }
 
 .material-icons-outlined {
@@ -19,7 +20,8 @@ body {
   grid-template-areas:
     'sidebar header header header'
     'sidebar main main main';
-  height: 100vh;
+  width: 100%; /* Устанавливаем ширину на 100% */
+  min-height: 100vh; /* Устанавливаем минимальную высоту на 100vh */
 }
 
 /* ---------- HEADER ---------- */
@@ -57,8 +59,10 @@ body {
 }
 
 /* ---------- SIDEBAR ---------- */
+
 #sidebar {
   grid-area: sidebar;
+  width: 250px; /* Увеличиваем ширину сайдбара */
   height: 100%;
   background-color: #263043;
   overflow-y: auto;
@@ -96,9 +100,6 @@ body {
   padding: 20px 30px;
   font-size: 18px;
   transition: background-color 0.3s ease, padding 0.3s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .sidebar-list-item:hover {
@@ -108,11 +109,20 @@ body {
 }
 
 .sidebar-list-item > a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: #9e9ea4;
+  white-space: nowrap; /* Отключаем перенос текста */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Добавляем многоточие для длинного текста */
 }
 
-.sidebar-list-item > .material-icons-outlined {
+.sidebar-list-item > a:hover {
+  background-color: #f0f0f0;
+}
+
+.material-icons-outlined {
   margin-right: 10px;
 }
 

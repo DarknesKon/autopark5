@@ -25,7 +25,7 @@ const DriversPage = () => {
 
   return (
     <div className="main-container">
-      <h1 className="main-title">Drivers</h1>
+      <h1 className="main-title">Водители</h1>
       <table className="drivers-table">
         <thead>
           <tr>

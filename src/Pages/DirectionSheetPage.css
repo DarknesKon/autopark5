@@ -1,15 +1,18 @@
 .direction-sheet-container {
-  padding: 20px;
+  padding: 40px 20px; /* Increased top/bottom padding for larger screens */
   color: #f0f0f0;
   font-family: 'Arial', sans-serif;
+  max-width: 1200px; /* Maximum width for better layout on large screens */
+  margin: auto; /* Center the container */
 }
 
 .direction-sheet-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(250px, 1fr)); /* 4 колонки на больших экранах */
+  grid-template-columns: repeat(4, minmax(250px, 1fr)); /* 4 columns on large screens */
   gap: 20px;
   list-style-type: none;
   padding: 0;
+  margin-top: 20px; /* Added margin to separate from title */
 }
 
 .direction-sheet-item {
@@ -19,8 +22,8 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   color: #ffffff;
-  max-width: 300px; /* Максимальная ширина для лучшей пропорции */
-  margin: 0 auto; /* Центрирование карточек */
+  max-width: 300px; /* Maximum width for better proportions */
+  margin: 0 auto; /* Center the cards */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,15 +64,36 @@
   transform: scale(1.05);
 }
 
-/* Адаптивные стили */
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .direction-sheet-list {
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* 3 columns on medium to large screens */
+  }
+}
+
 @media (max-width: 1024px) {
   .direction-sheet-list {
-    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* 2 колонки на экранах средней ширины */
+    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* 2 columns on medium screens */
   }
 }
 
 @media (max-width: 768px) {
   .direction-sheet-list {
-    grid-template-columns: 1fr; /* 1 колонка на маленьких экранах */
+    grid-template-columns: 1fr; /* 1 column on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .direction-sheet-item {
+    padding: 15px; /* Reduced padding for small screens */
+  }
+
+  .open-button {
+    padding: 10px 20px; /* Smaller button padding for mobile */
+    font-size: 0.9rem; /* Smaller font size for mobile */
+  }
+
+  .direction-sheet-item p {
+    font-size: 0.9rem; /* Smaller font size for text */
   }
 }

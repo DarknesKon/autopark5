@@ -41,10 +41,10 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => (
       </li>
       <li className="sidebar-list-item">
         <Link to="/direction-sheet" onClick={closeSidebar}>
-          <span className="material-icons-outlined">event_note</span> <span>Путевый лист</span>
+          <span className="material-icons-outlined">event_note</span> <span>Путевой лист</span>
         </Link>
       </li>
-      <li className="sidebar-list-item"> {/* Добавьте новый элемент списка */}
+      <li className="sidebar-list-item">
         <Link to="/fuel-info" onClick={closeSidebar}>
           <span className="material-icons-outlined">local_gas_station</span> <span>Информация о топливе</span>
         </Link>

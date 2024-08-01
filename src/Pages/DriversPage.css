@@ -1,22 +1,29 @@
-.error-message {
+.main-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: transparent; /* Сделать фон контейнера прозрачным */
+}
+
+.main-title {
   text-align: center;
-  margin-top: 50px;
-  font-size: 1.5rem;
-  color: #ff4d4d;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .drivers-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: transparent; /* Сделать фон таблицы прозрачным */
 }
 
 .drivers-table th,
 .drivers-table td {
   border: 1px solid #00aaff;
-  padding: 10px;
+  padding: 12px;
   text-align: left;
-  color: #ffffff;
+  color: #000000; /* Изменить цвет текста на чёрный для лучшей читаемости на светлом фоне */
 }
 
 .drivers-table th {
@@ -25,13 +32,76 @@
 }
 
 .drivers-table tr:nth-child(even) {
-  background-color: #252c3a;
+  background-color: #f9f9f9; /* Светлый цвет для четных строк */
 }
 
 .drivers-table tr:nth-child(odd) {
-  background-color: #1e2738;
+  background-color: #ffffff; /* Светлый цвет для нечетных строк */
 }
 
 .drivers-table tr:hover {
-  background-color: #37455c;
+  background-color: #e0e0e0; /* Цвет при наведении */
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  color: #ff4d4d;
+}
+
+/* Small screen adjustments */
+@media (max-width: 768px) {
+  .drivers-table th,
+  .drivers-table td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .drivers-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .drivers-table th,
+  .drivers-table td {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+  }
+
+  .error-message {
+    font-size: 1.2rem;
+  }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1200px) {
+  .main-container {
+    padding: 40px;
+  }
+
+  .main-title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+
+  .drivers-table th,
+  .drivers-table td {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
+/* Для карточек */
+.card {
+  background-color: #ffffff; /* Белый фон для карточек */
+  border: 1px solid #e0e0e0; /* Граница для карточек */
+  color: #000000; /* Черный текст для карточек */
 }
