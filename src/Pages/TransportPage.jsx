@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
-import "./TransportPage.css";
+import './TransportPage.css';
 
 const TransportPage = () => {
   const [cars, setCars] = useState([]);
@@ -37,23 +37,23 @@ const TransportPage = () => {
     cars.map((car, index) => (
       <li key={index} className="car-item">
         <h2>{car.car_make} {car.car_model}</h2>
-        <p>Color: {car.color}</p>
-        <p>Year: {car.year_of_issue}</p>
-        <p>Gasoline Consumption: {car.gasoline_consumption}</p>
-        <p>Mileage: {car.car_mileage}</p>
-        <p>State Number: {car.state_number}</p>
+        <p>Цвет: {car.color}</p>
+        <p>Год выпуска: {car.year_of_issue}</p>
+        <p>Расход топлива: {car.gasoline_consumption}</p>
+        <p>Пробег: {car.car_mileage}</p>
+        <p>Госномер: {car.state_number}</p>
       </li>
     ))
   ), [cars]);
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error-message">Error: {error}</div>;
+  if (loading) return <div className="loading">Загрузка...</div>;
+  if (error) return <div className="error-message">Ошибка: {error}</div>;
 
   return (
     <div className="transport-container">
-      <h1>Информация о Транспорте</h1>
+      <h1>Информация о транспорте</h1>
       <ul className="car-list">{renderedCars}</ul>
-      {hasMore && <button onClick={loadMore} className="load-more-button">Load More</button>}
+      {hasMore && <button onClick={loadMore} className="load-more-button">Загрузить ещё</button>}
     </div>
   );
 };

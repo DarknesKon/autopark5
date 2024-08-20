@@ -11,7 +11,7 @@ const DirectionSheetPage = () => {
       try {
         const response = await fetch('http://10.1.16.211/api/v1/direction-sheet/objects/');
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Ошибка сети при получении данных');
         }
         const result = await response.json();
         setData(result.results || []);
@@ -25,27 +25,39 @@ const DirectionSheetPage = () => {
     fetchData();
   }, []);
 
-  const handleDownload = async (fileUrl) => {
+  const handleDownload = async (fileId) => {
+    const fileUrl = `http://10.1.16.211/api/v1/direction-sheet/files/${fileId}/`;
+
     try {
+      // Получаем URL файла
       const response = await fetch(fileUrl);
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(`Ошибка сети при получении URL файла: ${response.status} ${response.statusText}`);
       }
-      const blob = await response.blob();
+      const result = await response.json();
+      const fileDownloadUrl = `http://10.1.16.211${result.data.url}`;
+
+      // Скачиваем файл
+      const fileResponse = await fetch(fileDownloadUrl);
+      if (!fileResponse.ok) {
+        throw new Error(`Ошибка сети при скачивании файла: ${fileResponse.status} ${fileResponse.statusText}`);
+      }
+      const blob = await fileResponse.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'direction_sheet.docx';
+      a.download = fileDownloadUrl.split('/').pop(); // Используем имя файла из URL
       document.body.appendChild(a);
       a.click();
-      a.remove();
+      document.body.removeChild(a); // Удаляем элемент после использования
+      window.URL.revokeObjectURL(url); // Очищаем созданный URL
     } catch (error) {
-      console.error('Error downloading file:', error);
+      console.error('Ошибка при скачивании файла:', error);
     }
   };
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error-message">Error: {error}</div>;
+  if (loading) return <div className="loading">Загрузка...</div>;
+  if (error) return <div className="error-message">Ошибка: {error}</div>;
 
   return (
     <div className="direction-sheet-container">
@@ -53,15 +65,15 @@ const DirectionSheetPage = () => {
         <ul className="direction-sheet-list">
           {data.map(item => (
             <li key={item.id} className="direction-sheet-item">
-              <p><strong>Driver:</strong> {item.driver?.name} {item.driver?.surname}</p>
-              <p><strong>Car:</strong> {item.car?.car_make} {item.car?.car_model}</p>
-              <p><strong>Start Date:</strong> {item.start_data}</p>
-              <p><strong>End Date:</strong> {item.end_data}</p>
-              <p><strong>Notes:</strong> {item.notes}</p>
-              <p><strong>Geo:</strong> {item.geo}</p>
+              <p><strong>Водитель:</strong> {item.driver?.name} {item.driver?.surname}</p>
+              <p><strong>Автомобиль:</strong> {item.car?.car_make} {item.car?.car_model}</p>
+              <p><strong>Дата начала:</strong> {item.start_data}</p>
+              <p><strong>Дата окончания:</strong> {item.end_data}</p>
+              <p><strong>Заметки:</strong> {item.notes}</p>
+              <p><strong>Гео:</strong> {item.geo}</p> 
               <button 
-                className="open-button" 
-                onClick={() => handleDownload(`http://10.1.16.211/media//temp/31_07_2024_1722414777.docx`)}
+                className="open-button" data-pk={item.id}
+                onClick={() => handleDownload(item.id)} // Передаем ID путевого листа
               >
                 загрузить
               </button>
@@ -69,7 +81,7 @@ const DirectionSheetPage = () => {
           ))}
         </ul>
       ) : (
-        <p>No data available</p>
+        <p>Нет доступных данных</p>
       )}
     </div>
   );

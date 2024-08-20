@@ -9,7 +9,7 @@ const Charts = () => {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
     },
     title: {
-      text: 'Штрафы в последний месяц'
+      text: ''
     }
   };
 
@@ -26,7 +26,7 @@ const Charts = () => {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
     },
     title: {
-      text: 'Штрафы в последний год'
+      text: ''
     }
   };
 
