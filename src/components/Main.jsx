@@ -12,6 +12,7 @@ const Main = () => (
       <Card title="Количество штрафов" count="  " icon="report" />
       <Card title="Процент штрафов" count="" icon="percent" />
     </div>
+    
 
     <Charts />
   </main>

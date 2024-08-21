@@ -26,28 +26,28 @@ const DriversPage = () => {
   }
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <Box my={4}>
-        <Typography variant="h4" gutterBottom align="center" className="text-white">
+        <Typography variant="h4" gutterBottom align="center" sx={{ color: '#333' }}>
           Водители
         </Typography>
-        <TableContainer component={Paper} className="bg-gray-900 text-white">
-          <Table aria-label="таблица водителей" className="min-w-full">
+        <TableContainer component={Paper} sx={{ backgroundColor: '#f9fafb', borderRadius: 1, boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+          <Table aria-label="таблица водителей">
             <TableHead>
-              <TableRow className="bg-gray-800">
-                <TableCell className="text-gray-400">ID</TableCell>
-                <TableCell className="text-gray-400">Фамилия</TableCell>
-                <TableCell className="text-gray-400">Имя</TableCell>
-                <TableCell className="text-gray-400">Отчество</TableCell>
-                <TableCell className="text-gray-400">Паспорт</TableCell>
-                <TableCell className="text-gray-400">Водительское удостоверение</TableCell>
-                <TableCell className="text-gray-400">Телефон</TableCell>
+              <TableRow sx={{ backgroundColor: '#e5e7eb' }}>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>ID</TableCell>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>Фамилия</TableCell>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>Имя</TableCell>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>Отчество</TableCell>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>Паспорт</TableCell>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>Водительское удостоверение</TableCell>
+                <TableCell sx={{ color: '#111', fontWeight: 'bold' }}>Телефон</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {drivers.length > 0 ? (
                 drivers.map(driver => (
-                  <TableRow key={driver.id} className="hover:bg-gray-800">
+                  <TableRow key={driver.id} sx={{ '&:nth-of-type(odd)': { backgroundColor: '#f3f4f6' } }}>
                     <TableCell>{driver.id}</TableCell>
                     <TableCell>{driver.surname}</TableCell>
                     <TableCell>{driver.name}</TableCell>
